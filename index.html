@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeerXGame</title>
+    <link rel="stylesheet" href="main_style.css">
+</head>
+<body>
+    <div id="game_main_container" class="game_container">
+
+        <section id="start_screen_view" class="screen_view active_screen">
+            <h1>BeerXGame</h1>
+            
+            <div class="rules_container">
+                <p><strong>Como Jogar:</strong> Classifique as atividades do processo produtivo.</p>
+                <ul class="rules_list">
+                    <li><span class="dot green"></span> <strong>Verde:</strong> Agrega valor.</li>
+                    <li><span class="dot orange"></span> <strong>Laranja:</strong> Necessário.</li>
+                    <li><span class="dot red"></span> <strong>Vermelho:</strong> Desperdício.</li>
+                </ul>
+                <p class="rules_note">Acertos rápidos dão mais pontos! Erros subtraem pontos. Compita com outros jogadores!</p>
+            </div>
+
+            <input type="text" id="player_initials_input" maxlength="3" placeholder="SIGLA">
+            <button id="start_game_button" class="action_button">Iniciar Jogo</button>
+        </section>
+
+        <section id="game_screen_view" class="screen_view hidden_screen">
+            <div id="turn_timer_display" class="timer_display">15</div>
+            
+            <div id="question_counter_display" class="counter_display">1/30</div>
+            
+            <div id="art_placeholder_area" class="art_placeholder">
+                <span id="placeholder_text">Imagem do Processo</span>
+                </div>
+
+            <h2 id="current_activity_text" class="activity_text">Carregando...</h2>
+
+            <div id="answer_buttons_container" class="buttons_container">
+                <button id="btn_value_add" class="answer_button green_button" data-color="green"> Agrega Valor</button>
+                <button id="btn_necessary_action" class="answer_button orange_button" data-color="orange"> Necessário</button>
+                <button id="btn_waste_action" class="answer_button red_button" data-color="red"> Não Agrega</button>
+            </div>
+        </section>
+
+        <section id="leaderboard_screen_view" class="screen_view hidden_screen">
+            <h2>Placar Final</h2>
+            <h3 id="player_final_score">Sua Pontuação: 0</h3>
+            <ul id="top_players_list" class="leaderboard_list">
+                </ul>
+            <button id="restart_game_button" class="action_button">Voltar</button>
+        </section>
+
+    </div>
+    
+    <script src="game_engine.js"></script>
+</body>
+</html>
