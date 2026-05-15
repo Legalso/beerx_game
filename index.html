@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="main_style.css">
 </head>
 <body>
+    <div id="orientation_warning_screen" class="orientation_warning">
+        <h2>Atenção</h2>
+        <p>Por favor, vire seu celular na horizontal para jogar o BeerXGame.</p>
+    </div>
+
     <div id="game_main_container" class="game_container">
 
         <section id="start_screen_view" class="screen_view active_screen">
@@ -15,11 +20,11 @@
             <div class="rules_container">
                 <p><strong>Como Jogar:</strong> Classifique as atividades do processo produtivo.</p>
                 <ul class="rules_list">
-                    <li><span class="dot green"></span> <strong>Verde:</strong>Agrega valor.</li>
-                    <li><span class="dot orange"></span> <strong>Laranja:</strong>Necessário.</li>
-                    <li><span class="dot red"></span> <strong>Vermelho:</strong>Desperdício.</li>
+                    <li><span class="dot green"></span> <strong>Verde:</strong> Agrega valor.</li>
+                    <li><span class="dot orange"></span> <strong>Laranja:</strong> Necessário.</li>
+                    <li><span class="dot red"></span> <strong>Vermelho:</strong> Desperdício.</li>
                 </ul>
-                <p class="rules_note">Acertos rápidos dão mais pontos! Erros subtraem pontos. Compita com outros jogadores!</p>
+                <p class="rules_note">Acertos rápidos dão mais pontos! Erros subtraem pontos. Compita com outros jogadores da semana das engenharias!</p>
             </div>
 
             <input type="text" id="player_initials_input" maxlength="3" placeholder="SIGLA">
@@ -32,15 +37,15 @@
             <div id="question_counter_display" class="counter_display">1/30</div>
             
             <div id="art_placeholder_area" class="art_placeholder">
-                <span id="placeholder_text">Imagem do Processo</span>
+                <span id="placeholder_text">Imagem</span>
                 </div>
 
             <h2 id="current_activity_text" class="activity_text">Carregando...</h2>
 
             <div id="answer_buttons_container" class="buttons_container">
-                <button id="btn_value_add" class="answer_button green_button" data-color="green"> Agrega Valor</button>
-                <button id="btn_necessary_action" class="answer_button orange_button" data-color="orange"> Necessário</button>
-                <button id="btn_waste_action" class="answer_button red_button" data-color="red"> Não Agrega</button>
+                <button id="btn_value_add" class="answer_button green_button" data-color="green">Agrega Valor</button>
+                <button id="btn_necessary_action" class="answer_button orange_button" data-color="orange">Necessário</button>
+                <button id="btn_waste_action" class="answer_button red_button" data-color="red">Não Agrega</button>
             </div>
         </section>
 

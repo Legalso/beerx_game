@@ -6,22 +6,43 @@
     font-family: Arial, sans-serif;
 }
 
-/* Force dark background outside the game area */
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     background-color: #222;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     overflow: hidden;
 }
 
-/* Responsive constraints strictly maintaining ratio */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orientation_warning {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100dvh;
+    background-color: #222;
+    color: white;
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.orientation_warning h2 { margin-bottom: 15px; color: #f39c12; }
+
+@media (orientation: portrait) {
+    .orientation_warning { display: flex; }
+    .game_container { display: none !important; }
+}
+
 .game_container {
     width: 100vw;
-    max-width: calc(100vh * (16 / 9));
-    height: 100vh;
-    max-height: calc(100vw * (9 / 16));
+    height: 100dvh;
     background-color: #f5f5f5;
     position: relative;
     overflow: hidden;
@@ -40,154 +61,115 @@ body {
     left: 0;
 }
 
-.hidden_screen {
-    display: none !important;
-}
+.hidden_screen { display: none !important; }
+.active_screen { display: flex; }
 
-.active_screen {
-    display: flex;
-}
-
-/* Rules explanation container */
 .rules_container {
     background: rgba(255, 255, 255, 0.9);
-    padding: 15px;
+    padding: 10px 15px;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 2.5dvh, 0.9rem);
     color: #333;
 }
 
-.rules_list {
-    list-style: none;
-    margin: 10px 0;
-    text-align: left;
-}
-
-.rules_list li {
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-}
-
-.rules_note {
-    font-style: italic;
-    font-size: 0.8rem;
-    color: #555;
-}
+.rules_list { list-style: none; margin: 5px 0; text-align: left; }
+.rules_list li { margin: 3px 0; display: flex; align-items: center; }
+.rules_note { font-style: italic; font-size: clamp(0.6rem, 2dvh, 0.8rem); color: #555; }
 
 .dot {
-    height: 12px;
-    width: 12px;
+    height: 10px; width: 10px;
     border-radius: 50%;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
-/* User inputs and main actions */
+h1 { font-size: clamp(1.5rem, 6dvh, 2.5rem); margin-bottom: 5px; }
+
 #player_initials_input {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4dvh, 2rem);
     text-align: center;
-    margin: 20px;
-    width: 150px;
+    margin: 5px;
+    width: 120px;
+    height: 15%;
+    max-height: 50px;
     text-transform: uppercase;
     border: 2px solid #333;
     border-radius: 5px;
 }
 
 .action_button {
-    padding: 15px 30px;
-    font-size: 1.5rem;
+    padding: 10px 20px;
+    font-size: clamp(1rem, 4dvh, 1.5rem);
     cursor: pointer;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 8px;
+    margin-top: 5px;
 }
 
-/* Timer component */
 .timer_display {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 2rem;
-    font-weight: bold;
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
+    position: absolute; top: 10px; left: 10px;
+    font-size: clamp(1.2rem, 4dvh, 2rem);
+    font-weight: bold; background: #fff;
+    padding: 5px 10px; border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Question counter component */
 .counter_display {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: #333;
+    position: absolute; top: 10px; right: 10px;
+    font-size: clamp(1rem, 3.5dvh, 1.5rem);
+    font-weight: bold; background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px; border-radius: 5px; color: #333;
 }
 
-/* Art visual fallback block */
 .art_placeholder {
     width: 80%;
     max-width: 800px;
-    height: 40vh;
-    max-height: 400px;
+    flex: 1;
+    min-height: 0;
+    max-height: 35%;
     background-color: #ddd;
-    border: 4px dashed #999;
+    border: 3px dashed #999;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 50px;
     position: relative;
 }
 
-#placeholder_text {
-    font-size: 1.5rem;
-    color: #666;
-    font-weight: bold;
-}
+#placeholder_text { font-size: clamp(1rem, 3dvh, 1.5rem); color: #666; font-weight: bold; }
+.process_image { position: absolute; width: 100%; height: 100%; object-fit: cover; }
 
-.process_image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Text alignment for readability */
 .activity_text {
     text-align: center;
-    margin: 10px;
-    font-size: 1.3rem;
-    padding: 0 20px;
-    flex-grow: 1;
+    margin: 5px 10px;
+    font-size: clamp(1rem, 4dvh, 1.4rem);
+    flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #333;
 }
 
-/* Touch oriented interactive area */
 .buttons_container {
     display: flex;
     width: 100%;
     justify-content: space-around;
-    padding: 10px;
-    margin-bottom: 5px;
+    padding: 5px 10px 15px 10px;
+    height: 25%;
+    max-height: 80px;
 }
 
 .answer_button {
     flex: 1;
     margin: 0 5px;
-    padding: 15px 0;
-    font-size: 1.2rem;
+    height: 100%;
+    font-size: clamp(0.9rem, 3dvh, 1.2rem);
     font-weight: bold;
     color: white;
     border: none;
@@ -200,10 +182,7 @@ body {
 .orange_button, .orange { background-color: #f39c12; }
 .red_button, .red { background-color: #e74c3c; }
 
-/* Visual feedback mechanism */
-.shake_animation {
-    animation: shake_effect 0.4s;
-}
+.shake_animation { animation: shake_effect 0.4s; }
 
 @keyframes shake_effect {
     0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -219,9 +198,7 @@ body {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.success_pulse_animation {
-    animation: pulse_effect 0.4s ease-out;
-}
+.success_pulse_animation { animation: pulse_effect 0.4s ease-out; }
 
 @keyframes pulse_effect {
     0% { transform: scale(1); background-color: #f5f5f5; }
@@ -234,8 +211,8 @@ body {
     list-style: none;
     width: 80%;
     max-width: 400px;
-    margin: 15px 0;
-    max-height: 40vh;
+    margin: 10px 0;
+    max-height: 50dvh;
     overflow-y: auto;
 }
 
@@ -245,7 +222,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3dvh, 1.2rem);
     border-radius: 5px;
     font-weight: bold;
     color: #333;
